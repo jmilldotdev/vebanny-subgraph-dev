@@ -6,7 +6,7 @@ dataSources:
     name: JVeBanny
     network: rinkeby
     source:
-      address: "0xce40e3C9369150e9B8f4daCE2EDc0Cb3795ad8e4"
+      address: "0x8fa9b9dd07f08f04e96cfe6dcb729265c8de5f32"
       abi: JVeBanny
       startBlock: 10795747
     mapping:

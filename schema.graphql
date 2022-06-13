@@ -1,6 +1,19 @@
-type ExampleEntity @entity {
+type VeNftToken @entity {
   id: ID!
-  count: BigInt!
-  owner: Bytes! # address
-  approved: Bytes! # address
+  tokenId: Int!
+  tokenUri: String!
+  createdAtTimestamp: BigInt!
+  owner: Bytes!
+  lockInfo: LockInfo!
+}
+
+type LockInfo @entity {
+  id: ID!
+  amount: BigInt!
+  end: Int!
+  duration: Int!
+  useJbToken: Boolean!
+  allowPublicExtension: Boolean!
+
+  token: VeNftToken! @derivedFrom(field: "lockInfo")
 }

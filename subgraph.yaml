@@ -1,4 +1,4 @@
-specVersion: 0.0.1
+specVersion: 0.0.2
 schema:
   file: ./schema.graphql
 dataSources:
@@ -6,51 +6,19 @@ dataSources:
     name: JVeBanny
     network: rinkeby
     source:
-      address: "0x8fa9b9dd07f08f04e96cfe6dcb729265c8de5f32"
+      address: "0xce40e3C9369150e9B8f4daCE2EDc0Cb3795ad8e4"
       abi: JVeBanny
+      startBlock: 10795747
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
       language: wasm/assemblyscript
       entities:
-        - Approval
-        - ApprovalForAll
-        - DelegateChanged
-        - DelegateVotesChanged
-        - ExtendLock
-        - Lock
-        - OwnershipTransferred
-        - Redeem
-        - SetAllowPublicExtension
-        - SetUriResolver
-        - Transfer
-        - Unlock
+        - VeNftToken
       abis:
         - name: JVeBanny
           file: ./abis/JVeBanny.json
       eventHandlers:
-        - event: Approval(indexed address,indexed address,indexed uint256)
-          handler: handleApproval
-        - event: ApprovalForAll(indexed address,indexed address,bool)
-          handler: handleApprovalForAll
-        - event: DelegateChanged(indexed address,indexed address,indexed address)
-          handler: handleDelegateChanged
-        - event: DelegateVotesChanged(indexed address,uint256,uint256)
-          handler: handleDelegateVotesChanged
-        - event: ExtendLock(indexed uint256,indexed uint256,uint256,uint256,address)
-          handler: handleExtendLock
         - event: Lock(indexed uint256,indexed address,uint256,uint256,address,uint256,address)
           handler: handleLock
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
-        - event: Redeem(indexed uint256,address,address,uint256,uint256,string,address)
-          handler: handleRedeem
-        - event: SetAllowPublicExtension(indexed uint256,bool,address)
-          handler: handleSetAllowPublicExtension
-        - event: SetUriResolver(indexed address,address)
-          handler: handleSetUriResolver
-        - event: Transfer(indexed address,indexed address,indexed uint256)
-          handler: handleTransfer
-        - event: Unlock(indexed uint256,address,uint256,address)
-          handler: handleUnlock
       file: ./src/mapping.ts

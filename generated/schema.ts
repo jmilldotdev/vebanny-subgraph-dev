@@ -78,98 +78,57 @@ export class VeNftToken extends Entity {
     this.set("owner", Value.fromBytes(value));
   }
 
-  get lockInfo(): string {
-    let value = this.get("lockInfo");
-    return value!.toString();
-  }
-
-  set lockInfo(value: string) {
-    this.set("lockInfo", Value.fromString(value));
-  }
-}
-
-export class LockInfo extends Entity {
-  constructor(id: string) {
-    super();
-    this.set("id", Value.fromString(id));
-  }
-
-  save(): void {
-    let id = this.get("id");
-    assert(id != null, "Cannot save LockInfo entity without an ID");
-    if (id) {
-      assert(
-        id.kind == ValueKind.STRING,
-        `Entities of type LockInfo must have an ID of type String but the id '${id.displayData()}' is of type ${id.displayKind()}`
-      );
-      store.set("LockInfo", id.toString(), this);
-    }
-  }
-
-  static load(id: string): LockInfo | null {
-    return changetype<LockInfo | null>(store.get("LockInfo", id));
-  }
-
-  get id(): string {
-    let value = this.get("id");
-    return value!.toString();
-  }
-
-  set id(value: string) {
-    this.set("id", Value.fromString(value));
-  }
-
-  get amount(): BigInt {
-    let value = this.get("amount");
+  get lockAmount(): BigInt {
+    let value = this.get("lockAmount");
     return value!.toBigInt();
   }
 
-  set amount(value: BigInt) {
-    this.set("amount", Value.fromBigInt(value));
+  set lockAmount(value: BigInt) {
+    this.set("lockAmount", Value.fromBigInt(value));
   }
 
-  get end(): i32 {
-    let value = this.get("end");
+  get lockEnd(): i32 {
+    let value = this.get("lockEnd");
     return value!.toI32();
   }
 
-  set end(value: i32) {
-    this.set("end", Value.fromI32(value));
+  set lockEnd(value: i32) {
+    this.set("lockEnd", Value.fromI32(value));
   }
 
-  get duration(): i32 {
-    let value = this.get("duration");
+  get lockDuration(): i32 {
+    let value = this.get("lockDuration");
     return value!.toI32();
   }
 
-  set duration(value: i32) {
-    this.set("duration", Value.fromI32(value));
+  set lockDuration(value: i32) {
+    this.set("lockDuration", Value.fromI32(value));
   }
 
-  get useJbToken(): boolean {
-    let value = this.get("useJbToken");
+  get lockUseJbToken(): boolean {
+    let value = this.get("lockUseJbToken");
     return value!.toBoolean();
   }
 
-  set useJbToken(value: boolean) {
-    this.set("useJbToken", Value.fromBoolean(value));
+  set lockUseJbToken(value: boolean) {
+    this.set("lockUseJbToken", Value.fromBoolean(value));
   }
 
-  get allowPublicExtension(): boolean {
-    let value = this.get("allowPublicExtension");
+  get lockAllowPublicExtension(): boolean {
+    let value = this.get("lockAllowPublicExtension");
     return value!.toBoolean();
   }
 
-  set allowPublicExtension(value: boolean) {
-    this.set("allowPublicExtension", Value.fromBoolean(value));
+  set lockAllowPublicExtension(value: boolean) {
+    this.set("lockAllowPublicExtension", Value.fromBoolean(value));
   }
 
-  get token(): string {
-    let value = this.get("token");
-    return value!.toString();
+  get isUnlocked(): boolean {
+    let value = this.get("isUnlocked");
+    return value!.toBoolean();
   }
 
-  set token(value: string) {
-    this.set("token", Value.fromString(value));
+  set isUnlocked(value: boolean) {
+    this.set("isUnlocked", Value.fromBoolean(value));
   }
 }

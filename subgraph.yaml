@@ -25,4 +25,6 @@ dataSources:
           handler: handleExtendLock
         - event: Unlock(indexed uint256,address,uint256,address)
           handler: handleUnlock
+        - event: Redeem(indexed uint256,address,address,uint256,uint256,string,address)
+          handler: handleRedeem
       file: ./src/mapping.ts
